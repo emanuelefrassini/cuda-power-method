@@ -1,0 +1,8 @@
+bin/
+.venv/
+__pycache__/
+.pytest_cache/
+results/
+*.o
+*.pyc
+.DS_Store

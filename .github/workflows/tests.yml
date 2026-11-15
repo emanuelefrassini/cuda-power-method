@@ -1,0 +1,13 @@
+name: CPU numerical validation
+on:
+  push:
+  pull_request:
+jobs:
+  cpu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build CPU reference
+        run: make cpu
+      - name: Known eigenvalue and convergence tests
+        run: make test
