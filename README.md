@@ -18,10 +18,12 @@ The project includes a CPU reference implementation and GPU kernels for:
 
 Power iteration generates successive approximations to the dominant
 unit eigenvector:
+
 $$
 v_{k+1}=\frac{Av_k}{\|Av_k\|_2},\qquad
 \lambda_k=\frac{v_k^TAv_k}{v_k^Tv_k}.
 $$
+
 A deterministic, positive definite **dense test matrix**
 $\(A=2I+\mathbf{1}\mathbf{1}^T/N\)$ is used so that the true dominant
 eigenvalue is known analytically to be **3** (all other eigenvalues equal
