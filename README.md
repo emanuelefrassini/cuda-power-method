@@ -25,10 +25,10 @@ v_{k+1}=\frac{Av_k}{\|Av_k\|_2},\qquad
 $$
 
 A deterministic, positive definite **dense test matrix**
-$\(A=2I+\mathbf{1}\mathbf{1}^T/N\)$ is used so that the true dominant
+$A=2I+\mathbf{1}\mathbf{1}^T/N$ is used so that the true dominant
 eigenvalue is known analytically to be **3** (all other eigenvalues equal
 2). The program executes the requested number of iterations, then reports the
-Rayleigh quotient and relative residual \(\|Av-\lambda v\|_2/\|Av\|_2\).
+Rayleigh quotient and relative residual $\|Av-\lambda v\|_2/\|Av\|_2$.
 
 Both implementations explicitly multiply the **dense** matrix; they do not
 exploit the special rank one shortcut. See [numerical notes](docs/numerics.md).
