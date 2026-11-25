@@ -2,17 +2,17 @@
 
 A C++/CUDA implementation of **power iteration** for estimating the dominant
 eigenvalue and eigenvector of a dense matrix. Developed around GPU-computing
-concepts studied in the **High-Performance Computing** course during the MSc
+concepts studied in the **High Performance Computing** course during the MSc
 Applied Mathematics programme at **TU Delft**.
 
 The project includes a CPU reference implementation and GPU kernels for:
 - dense matrix-vector multiplication, with warp-level reduction;
-- shared-memory parallel reduction to compute the vector norm;
-- GPU-side normalization of the iteration vector;
+- shared memory parallel reduction to compute the vector norm;
+- GPU side normalization of the iteration vector;
 - validation of the eigenvalue with a known spectrum and of the eigenvector
   through the relative eigenpair residual.
 
-![CPU power-method convergence](figures/cpu_convergence.png)
+![CPU power method convergence](figures/cpu_convergence.png)
 
 ## Mathematical problem
 
@@ -24,14 +24,14 @@ v_{k+1}=\frac{Av_k}{\|Av_k\|_2},\qquad
 \lambda_k=\frac{v_k^TAv_k}{v_k^Tv_k}.
 \]
 
-A deterministic, positive-definite **dense test matrix**
+A deterministic, positive definite **dense test matrix**
 \(A=2I+\mathbf{1}\mathbf{1}^T/N\) is used so that the true dominant
 eigenvalue is known analytically to be **3** (all other eigenvalues equal
 2). The program executes the requested number of iterations, then reports the
 Rayleigh quotient and relative residual \(\|Av-\lambda v\|_2/\|Av\|_2\).
 
 Both implementations explicitly multiply the **dense** matrix; they do not
-exploit the special rank-one shortcut. See [numerical notes](docs/numerics.md).
+exploit the special rank one shortcut. See [numerical notes](docs/numerics.md).
 
 ## Requirements
 
@@ -75,7 +75,7 @@ execution times depend on the hardware, and are not predetermined.
 
 The scripts compare **CPU compute time**, **GPU kernel execution time**, and
 **GPU end-to-end time** (device allocation plus transfers, kernels and final
-copy-back). These are separate metrics; kernel-only acceleration is not the
+copy back). These are separate metrics; kernel-only acceleration is not the
 same as total application speedup.
 
 ```bash
@@ -103,9 +103,8 @@ python3 scripts/plot_convergence.py --n 256 --output-dir figures
 
 ## Measured performance — NVIDIA GeForce MX450
 
-Benchmarks performed in WSL Ubuntu on 15 November 2026.
 Each configuration uses 48 power iterations, 256 CUDA threads
-per block, one warm-up run and five recorded repetitions.
+per block, one warm up run and five recorded repetitions.
 
 | Matrix size | CPU (ms) | GPU kernels (ms) | GPU total (ms) | End-to-end speedup |
 |---|---:|---:|---:|---:|
@@ -152,7 +151,6 @@ docs/numerics.md               Numerical and benchmarking methodology
 
 ## Context and attribution
 
-This standalone implementation illustrates the dense power-method and CUDA
+This standalone implementation illustrates the dense power method and CUDA
 parallelism topics explored in TU Delft HPC coursework. It does not include
-course-provided starter files. Both correctness and timing results are
-reported from executable tests rather than inferred from historical figures.
+course provided starter files. 
